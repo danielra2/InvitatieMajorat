@@ -29,7 +29,6 @@ html,body{height:100%;background:#010a17;font-family:'DM Sans',sans-serif;color:
 
 #s-start{background:#010a17}
 #bg-canvas{position:absolute;inset:0;z-index:0}
-
 .start-center{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:2rem;text-align:center}
 .emblem{width:116px;height:116px;border-radius:50%;background:linear-gradient(135deg,#041429,#061d3a);border:1px solid rgba(61,155,255,0.3);display:flex;align-items:center;justify-content:center;position:relative;animation:float 4s ease-in-out infinite}
 .emblem::before{content:'';position:absolute;inset:-3px;border-radius:50%;background:conic-gradient(from 0deg,transparent 55%,var(--acc2) 70%,var(--gold) 78%,transparent 88%);animation:spin 5s linear infinite}
@@ -64,22 +63,38 @@ html,body{height:100%;background:#010a17;font-family:'DM Sans',sans-serif;color:
 .admin-hint:hover{color:rgba(232,244,255,0.38)}
 
 #s-pass,#s-admin{background:#010a17;padding:2rem 1rem;overflow-y:auto}
-.glass-card{background:rgba(8,22,48,0.95);backdrop-filter:blur(20px);border:1px solid rgba(61,155,255,0.2);border-radius:24px;padding:2rem 1.8rem;width:100%;max-width:420px;position:relative;overflow:hidden}
+.glass-card{background:rgba(8,22,48,0.95);backdrop-filter:blur(20px);border:1px solid rgba(61,155,255,0.2);border-radius:24px;padding:2rem 1.8rem;width:100%;max-width:460px;position:relative;overflow:hidden}
 .glass-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--acc2),var(--gold),var(--acc2),transparent)}
 .admin-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--gold2);margin-bottom:.2rem;text-align:center}
 .admin-sub{font-size:.68rem;letter-spacing:.25em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:1.2rem}
-.admin-count{display:inline-flex;align-items:center;gap:.4rem;background:rgba(26,111,212,0.14);border:1px solid rgba(61,155,255,0.18);border-radius:50px;padding:.28rem .85rem;font-size:.8rem;color:var(--acc3);margin-bottom:1rem}
-.guest-row{display:flex;align-items:center;gap:.55rem;padding:.5rem .55rem;border-radius:9px;transition:background .15s;margin-bottom:.25rem}
-.guest-row:hover{background:rgba(61,155,255,0.08)}
+
+.stats-row{display:flex;gap:.6rem;margin-bottom:1.2rem}
+.stat-box{flex:1;border-radius:12px;padding:.7rem .5rem;text-align:center}
+.stat-box.accepted{background:rgba(61,155,255,0.12);border:1px solid rgba(61,155,255,0.25)}
+.stat-box.declined{background:rgba(232,100,100,0.1);border:1px solid rgba(232,100,100,0.2)}
+.stat-box.total{background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2)}
+.stat-num{font-size:1.6rem;font-weight:600;line-height:1}
+.stat-num.acc{color:var(--acc3)}
+.stat-num.dec{color:#e87070}
+.stat-num.tot{color:var(--gold)}
+.stat-label{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+
+.section-head{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin:1rem 0 .5rem;padding-bottom:.4rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.section-head.acc{color:rgba(126,200,255,0.6)}
+.section-head.dec{color:rgba(232,135,135,0.6)}
+
+.guest-row{display:flex;align-items:center;gap:.55rem;padding:.45rem .5rem;border-radius:9px;transition:background .15s;margin-bottom:.2rem}
+.guest-row:hover{background:rgba(255,255,255,0.04)}
 .guest-num{font-size:.72rem;color:var(--muted);min-width:1.3rem;text-align:right}
-.guest-name-text{flex:1;font-size:.9rem;color:var(--text)}
-.guest-ts{font-size:.68rem;color:var(--muted);white-space:nowrap}
+.guest-name-text{flex:1;font-size:.88rem;color:var(--text)}
+.badge-yes{font-size:.65rem;padding:.15rem .5rem;border-radius:50px;background:rgba(61,155,255,0.15);color:var(--acc3);border:1px solid rgba(61,155,255,0.25)}
+.badge-no{font-size:.65rem;padding:.15rem .5rem;border-radius:50px;background:rgba(232,100,100,0.12);color:#e8a0a0;border:1px solid rgba(232,100,100,0.2)}
 .guest-edit-inp{flex:1;background:rgba(4,18,40,0.9);border:1px solid rgba(61,155,255,0.38);border-radius:7px;color:white;font-size:.85rem;font-family:'DM Sans',sans-serif;padding:.22rem .5rem;outline:none}
 .edit-btn,.save-btn,.del-btn{background:none;border:none;cursor:pointer;font-size:.82rem;padding:.18rem .38rem;border-radius:5px;transition:background .15s;color:var(--muted)}
 .edit-btn:hover{background:rgba(61,155,255,0.15);color:var(--acc3)}
 .save-btn{color:#5bc87a}.save-btn:hover{background:rgba(91,200,122,0.15)}
-.del-btn{color:rgba(232,100,100,0.55)}.del-btn:hover{background:rgba(232,100,100,0.12);color:#e87070}
-.empty-state{text-align:center;color:var(--muted);font-size:.85rem;padding:1.8rem 0;font-style:italic}
+.del-btn{color:rgba(232,100,100,0.45)}.del-btn:hover{background:rgba(232,100,100,0.12);color:#e87070}
+.empty-state{text-align:center;color:var(--muted);font-size:.82rem;padding:1rem 0;font-style:italic}
 .back-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:rgba(232,244,255,0.45);padding:.55rem 1.4rem;border-radius:50px;font-size:.8rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;margin-top:.8rem;letter-spacing:.06em}
 .back-btn:hover{background:rgba(255,255,255,0.1);color:var(--text)}
 .loading-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--acc3);margin:0 2px;animation:pulse 1.2s ease-in-out infinite}
@@ -129,20 +144,22 @@ html,body{height:100%;background:#010a17;font-family:'DM Sans',sans-serif;color:
 </div>
 
 <div id="s-admin" class="screen">
-  <div class="glass-card" style="max-width:480px">
+  <div class="glass-card">
     <div class="admin-title">Panou Admin 👑</div>
     <div class="admin-sub">Patricia Dragomir — Majorat 2026</div>
-    <div style="display:flex;justify-content:center;margin-bottom:1rem">
-      <div class="admin-count">✦ <span id="adm-count">0</span> confirmați</div>
+    <div class="stats-row">
+      <div class="stat-box accepted"><div class="stat-num acc" id="cnt-yes">0</div><div class="stat-label">confirmați</div></div>
+      <div class="stat-box declined"><div class="stat-num dec" id="cnt-no">0</div><div class="stat-label">nu pot veni</div></div>
+      <div class="stat-box total"><div class="stat-num tot" id="cnt-tot">0</div><div class="stat-label">total</div></div>
     </div>
-    <div id="adm-list"><div class="empty-state"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></div></div>
+    <div id="adm-list"><div class="empty-state" style="padding:2rem 0"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></div></div>
   </div>
   <button class="back-btn" onclick="showScreen('s-card')">← Înapoi la invitație</button>
 </div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, onSnapshot, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, doc, updateDoc, deleteDoc, onSnapshot, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAXFvp_AX583tPUHUxK0dRIO6qN9cvHoPg",
@@ -156,7 +173,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const guestsCol = collection(db, "guests");
-
 const PASS = "patricia18";
 let unsubscribe = null;
 
@@ -188,16 +204,13 @@ function drawBg(){
 
 /* ── Navigation ── */
 window.showScreen = function(id){
-  document.querySelectorAll(".screen").forEach(s=>{s.classList.remove("on","anim")});
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on","anim"));
   const el=document.getElementById(id);
   el.classList.add("on");
   requestAnimationFrame(()=>el.classList.add("anim"));
   if(id==="s-admin") startAdminListener();
-  else if(unsubscribe && id !== "s-admin"){stopAdminListener()}
-  if(id==="s-pass"){
-    document.getElementById("pass-inp").value="";
-    document.getElementById("pass-err").textContent="";
-  }
+  else if(id!=="s-admin" && unsubscribe){unsubscribe();unsubscribe=null}
+  if(id==="s-pass"){document.getElementById("pass-inp").value="";document.getElementById("pass-err").textContent=""}
 };
 
 /* ── RSVP ── */
@@ -214,17 +227,13 @@ window.rsvp = async function(yes){
   const by=document.getElementById("byes");
   const bn=document.getElementById("bno");
   by.disabled=bn.disabled=true;
-
+  try{
+    await addDoc(guestsCol,{name,accepted:yes,timestamp:serverTimestamp()});
+  }catch(e){console.error(e)}
   if(yes){
-    try{
-      await addDoc(guestsCol,{name,accepted:true,timestamp:serverTimestamp()});
-      toast.className="toast-box yes";
-      toast.innerHTML=`✦ Minunat, <strong>${name}</strong>! Ne bucurăm enorm!`;
-      confetti();
-    } catch(e){
-      toast.className="toast-box yes";
-      toast.innerHTML="✦ Confirmat! Ne vedem la petrecere!";
-    }
+    toast.className="toast-box yes";
+    toast.innerHTML=`✦ Minunat, <strong>${name}</strong>!Mă bucur enorm!`;
+    confetti();
   } else {
     toast.className="toast-box no";
     toast.innerHTML=`Ne pare rău că nu poți veni, <strong>${name}</strong>...`;
@@ -249,26 +258,51 @@ function startAdminListener(){
   if(unsubscribe) unsubscribe();
   const q=query(guestsCol,orderBy("timestamp","asc"));
   unsubscribe=onSnapshot(q,snap=>{
-    const guests=snap.docs.map(d=>({id:d.id,...d.data()}));
-    renderAdmin(guests);
+    const all=snap.docs.map(d=>({id:d.id,...d.data()}));
+    const accepted=all.filter(g=>g.accepted);
+    const declined=all.filter(g=>!g.accepted);
+    document.getElementById("cnt-yes").textContent=accepted.length;
+    document.getElementById("cnt-no").textContent=declined.length;
+    document.getElementById("cnt-tot").textContent=all.length;
+    renderAdmin(accepted, declined);
   });
 }
-function stopAdminListener(){
-  if(unsubscribe){unsubscribe();unsubscribe=null;}
-}
 
-function renderAdmin(guests){
-  document.getElementById("adm-count").textContent=guests.length;
+function esc(s){return s.replace(/'/g,"\'").replace(/"/g,"&quot;")}
+
+function renderAdmin(accepted, declined){
   const list=document.getElementById("adm-list");
-  if(!guests.length){list.innerHTML='<div class="empty-state">Nimeni nu a confirmat încă...</div>';return}
-  list.innerHTML=guests.map((g,i)=>
-    `<div class="guest-row" id="row-${g.id}">
-      <span class="guest-num">${i+1}.</span>
-      <span class="guest-name-text">✦ ${g.name}</span>
-      <button class="edit-btn" onclick="startEdit('${g.id}','${g.name.replace(/'/g,"\\'")}')">✎</button>
-      <button class="del-btn" onclick="delGuest('${g.id}','${g.name.replace(/'/g,"\\'")}')">✕</button>
-    </div>`
-  ).join("");
+  let html="";
+
+  html+=`<div class="section-head acc">✦ Vin la petrecere (${accepted.length})</div>`;
+  if(accepted.length){
+    html+=accepted.map((g,i)=>`
+      <div class="guest-row" id="row-${g.id}">
+        <span class="guest-num">${i+1}.</span>
+        <span class="guest-name-text">${g.name}</span>
+        <span class="badge-yes">vin</span>
+        <button class="edit-btn" onclick="startEdit('${g.id}','${esc(g.name)}')">✎</button>
+        <button class="del-btn" onclick="delGuest('${g.id}','${esc(g.name)}')">✕</button>
+      </div>`).join("");
+  } else {
+    html+=`<div class="empty-state">Nimeni confirmat încă...</div>`;
+  }
+
+  html+=`<div class="section-head dec" style="margin-top:.8rem">✕ Nu pot veni (${declined.length})</div>`;
+  if(declined.length){
+    html+=declined.map((g,i)=>`
+      <div class="guest-row" id="row-${g.id}">
+        <span class="guest-num">${i+1}.</span>
+        <span class="guest-name-text" style="color:rgba(232,244,255,0.5)">${g.name}</span>
+        <span class="badge-no">absent</span>
+        <button class="edit-btn" onclick="startEdit('${g.id}','${esc(g.name)}')">✎</button>
+        <button class="del-btn" onclick="delGuest('${g.id}','${esc(g.name)}')">✕</button>
+      </div>`).join("");
+  } else {
+    html+=`<div class="empty-state">Nimeni nu a refuzat încă 🎉</div>`;
+  }
+
+  list.innerHTML=html;
 }
 
 window.startEdit = function(id, currentName){
@@ -278,37 +312,24 @@ window.startEdit = function(id, currentName){
     <span class="guest-num">#</span>
     <input class="guest-edit-inp" id="ei-${id}" value="${currentName}" onkeydown="if(event.key==='Enter')saveEdit('${id}')">
     <button class="save-btn" onclick="saveEdit('${id}')">✓</button>
-    <button class="del-btn" onclick="cancelEdit('${id}','${currentName}')">✕</button>
+    <button class="del-btn" onclick="cancelEdit()">✕</button>
   `;
   document.getElementById("ei-"+id).focus();
 };
 
 window.saveEdit = async function(id){
   const inp=document.getElementById("ei-"+id);
-  if(!inp) return;
-  const newName=inp.value.trim();
-  if(!newName) return;
-  try{
-    await updateDoc(doc(db,"guests",id),{name:newName});
-  } catch(e){console.error(e)}
+  if(!inp||!inp.value.trim()) return;
+  try{await updateDoc(doc(db,"guests",id),{name:inp.value.trim()})}
+  catch(e){console.error(e)}
 };
 
-window.cancelEdit = function(id, name){
-  const row=document.getElementById("row-"+id);
-  if(!row) return;
-  row.innerHTML=`
-    <span class="guest-num">·</span>
-    <span class="guest-name-text">✦ ${name}</span>
-    <button class="edit-btn" onclick="startEdit('${id}','${name}')">✎</button>
-    <button class="del-btn" onclick="delGuest('${id}','${name}')">✕</button>
-  `;
-};
+window.cancelEdit = function(){};
 
 window.delGuest = async function(id, name){
-  if(!confirm("Ștergi " + name + "?")) return;
-  try{
-    await deleteDoc(doc(db,"guests",id));
-  } catch(e){console.error(e)}
+  if(!confirm("Ștergi "+name+"?")) return;
+  try{await deleteDoc(doc(db,"guests",id))}
+  catch(e){console.error(e)}
 };
 
 /* ── Confetti ── */
